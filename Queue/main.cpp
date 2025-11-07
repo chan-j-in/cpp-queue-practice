@@ -33,7 +33,18 @@ int main() {
 	for (int i = 0; i < 10; i++) {
 		circleQueueInt2.push(i + 1);
 	}
+	cout << "3개 pop" << endl;
 	for (int i = 0; i < 3; i++) {
+		cout << circleQueueInt2.pop() << endl;
+	}
+
+	cout << "4개 push" << endl;
+	for (int i = 0; i < 4; i++) {
+		circleQueueInt2.push(i + 1);
+	}
+
+	cout << "전부 pop" << endl;
+	while (!circleQueueInt2.isEmpty()) {
 		cout << circleQueueInt2.pop() << endl;
 	}
 
