@@ -81,3 +81,42 @@ public:
 	bool isEmpty() const{ return size == 0; }
 };
 
+template <typename T, int SIZE = 100>
+class CCircleQueue {
+public:
+	CCircleQueue() : size(0), head(0), tail(0) {}
+	~CCircleQueue() {}
+
+private:
+	template <typename U>
+	friend class CQueue;
+
+private:
+	T arr[SIZE + 1];
+	unsigned int size;
+	unsigned int head;
+	unsigned int tail;
+
+public:
+	void push(const T& data) {
+		if (isFull()) return;
+
+		tail = (tail + 1) % (SIZE + 1);
+		arr[tail] = data;
+
+		size++;
+	}
+
+	T pop() {
+		if (isEmpty()) return T{};
+
+		head = (head + 1) % (SIZE + 1);
+
+		size--;
+
+		return arr[head];
+	}
+
+	bool isFull() { return size == SIZE; }
+	bool isEmpty() { return size == 0; }
+};
