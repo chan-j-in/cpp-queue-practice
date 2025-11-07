@@ -54,10 +54,10 @@ public:
 		PNODE node = new NODE;
 		node->data = data;
 
-		node->next = rear;
+		rear->prev->next = node;
 		node->prev = rear->prev;
 
-		rear->prev->next = node;
+		node->next = rear;
 		rear->prev = node;
 
 		size++;
@@ -78,6 +78,6 @@ public:
 		return data;
 	}
 
-	bool isEmpty() { return size == 0; }
+	bool isEmpty() const{ return size == 0; }
 };
 
